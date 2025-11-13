@@ -13,6 +13,15 @@ let loadCategory = () => {
 }
 
 
+let removeActive = () => {
+    let categoyBtn = document.querySelectorAll(".category-btn")
+    
+    categoyBtn.forEach((btn) => {
+        btn.classList.remove("active");
+    })
+}
+
+
 // loadCategoryId
 
 let loadCategoryId = (id) => {
@@ -20,6 +29,10 @@ let loadCategoryId = (id) => {
     fetch(`https://openapi.programming-hero.com/api/category/${id}`)
         .then(res => res.json())
         .then(json => {
+
+            removeActive();
+            let clickedBtn = document.getElementById(`category-btn-${id}`)
+            clickedBtn.classList.add("active")
             // console.log(json.plants)
             displayCategoryId(json.plants)
         })
@@ -70,7 +83,7 @@ let displayCategory = (categories) => {
         let categoryBtn = document.createElement("button");
 
         categoryBtn.innerHTML = `
-        <button onclick="loadCategoryId(${category.id})" class="text-lg hover:text-white hover:bg-[#15803d] rounded-md cursor-pointer py-3 pl-3 w-69 text-left hover:transition duration-300">${category.category_name}</button>
+        <button id="category-btn-${category.id}" onclick="loadCategoryId(${category.id})" class="text-lg hover:text-white hover:bg-[#15803d] rounded-md cursor-pointer py-3 pl-3 w-69 text-left hover:transition duration-300 category-btn">${category.category_name}</button>
         `
 
         categoryContainer.append(categoryBtn);
@@ -118,7 +131,7 @@ let displayCart = (plants) => {
                                 <p class="font-bold">৳<span>${plant.price}</span></p>
                             </div>
                         </div>
-                        <button class="w-full bg-[#15803d] text-white py-4 rounded-4xl mt-3 cursor-pointer text-lg hover:bg-[#105a2b] hover:transition duration-300">Add to Cart</button>
+                        <button onclick="add-to-cart" class="w-full bg-[#15803d] text-white py-4 rounded-4xl mt-3 cursor-pointer text-lg hover:bg-[#105a2b] hover:transition duration-300">Add to Cart</button>
                     </div>
         `
 
