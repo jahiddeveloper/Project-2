@@ -15,7 +15,7 @@ let loadCategory = () => {
 
 let removeActive = () => {
     let categoyBtn = document.querySelectorAll(".category-btn")
-    
+
     categoyBtn.forEach((btn) => {
         btn.classList.remove("active");
     })
@@ -131,7 +131,7 @@ let displayCart = (plants) => {
                                 <p class="font-bold">৳<span>${plant.price}</span></p>
                             </div>
                         </div>
-                        <button onclick="add-to-cart" class="w-full bg-[#15803d] text-white py-4 rounded-4xl mt-3 cursor-pointer text-lg hover:bg-[#105a2b] hover:transition duration-300">Add to Cart</button>
+                        <button class="w-full bg-[#15803d] text-white py-4 rounded-4xl mt-3 cursor-pointer text-lg hover:bg-[#105a2b] hover:transition duration-300 add-cart">Add to Cart</button>
                     </div>
         `
 
