@@ -13,6 +13,41 @@ let loadCategory = () => {
 }
 
 
+// Add to cart btn activated
+
+let addCart = () => {
+    let carts = document.getElementsByClassName("add-cart")
+
+
+    for (let cart of carts) {
+        cart.addEventListener('click', () => {
+
+            let addToCartContainer = document.getElementById("add-cart-container");
+
+            let addCart = document.createElement("div")
+
+            addCart.innerHTML = `
+            <div class="px-3 py-4 shadow-sm rounded-lg mt-2 flex justify-between items-center bg-[#f0fdf4]">
+
+                            <div>
+                                <h1 class="text-lg font-bold">Jahid</h1>
+                                <p class="mt-1">৳<span></span> x <span>1</span></p>
+                            </div>
+                            <div class="text-red-600 cursor-pointer">
+                                <i class="fa-solid fa-x"></i>
+                            </div>
+
+                        </div>
+            `
+
+            addToCartContainer.append(addCart)
+
+        })
+    }
+}
+
+
+
 let removeActive = () => {
     let categoyBtn = document.querySelectorAll(".category-btn")
 
@@ -131,12 +166,16 @@ let displayCart = (plants) => {
                                 <p class="font-bold">৳<span>${plant.price}</span></p>
                             </div>
                         </div>
-                        <button class="w-full bg-[#15803d] text-white py-4 rounded-4xl mt-3 cursor-pointer text-lg hover:bg-[#105a2b] hover:transition duration-300 add-cart">Add to Cart</button>
+                        <button class="w-full bg-[#15803d] text-white py-4 rounded-4xl mt-3 cursor-pointer text-lg hover:bg-[#105a2b] hover:transition duration-300 add-cart ">Add to Cart</button>
                     </div>
         `
 
         cartContainer.append(cart)
     })
+
+    addCart();
+
+
 }
 
 loadCart();
